@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+    <div>  
+        <input class="result" type="text" value="" readonly>
+        </div>
+    <div class="buttons">
+        <input class="num-btn" type="button" value="1" onclick="values(1)">
+        <input class="num-btn" type="button" value="2" onclick="values(2)">
+        <input class="num-btn" type="button" value="3" onclick="values(3)">
+        <input class="add-value" type="button" value="+" onclick="opetrationSetter('+')">
+        <input class="num-btn" type="button" value="4" onclick="values(4)">
+        <input class="num-btn" type="button" value="5" onclick="values(5)">
+        <input class="num-btn" type="button" value="6" onclick="values(6)">
+        <input class="mul-value" type="button" value="*" onclick="opetrationSetter('*')">
+        <input class="num-btn" type="button" value="7" onclick="values(7)">
+        <input class="num-btn" type="button" value="8" onclick="values(8)">
+        <input class="num-btn" type="button" value="9" onclick="values(9)">
+        <input class="sub-value" type="button" value="-" onclick="opetrationSetter('-')">
+        <input type="button" class="reminder-btn"value="%" onclick="opetrationSetter('%')">
+        <input class="num-btn" type="button" value="0" onclick="values(0)">
+        <input class="div-value" type="button" value="/" onclick="opetrationSetter('/')">
+        <input class="equal-value" type="button" value="=" onclick="equal()">
+        <input class="clear-values" type="button" value="c" onclick="clearData()">
+        <input class="remove-element" type="button" value="<-" onclick="removeElement()">
+    </div>
+
+
+
+</div>
+
+    <script>
+        // set Values in required field 
+        function values(e) {
+            const result=document.getElementsByClassName("result")[0].value+=e;
+        }
+        // clear data 
+        function clearData() {
+           const inputValues= document.getElementsByClassName('result')[0]
+           inputValues.value.length>0?inputValues.value="":null;
+        }
+        // set oprations add,sub,mul,dev 
+        function opetrationSetter(e) {
+            let add=document.getElementsByClassName("result")[0].value
+            
+            if (add.length!==0 && add[add.length-1]!==e && add.indexOf("+")) {
+                document.getElementsByClassName("result")[0].value+=e;
+            }else if (add.length!==0 && add[add.length-1]!==e && add.indexOf("-")) {
+                document.getElementsByClassName("result")[0].value+=e;
+            }else if (add.length!==0 && add[add.length-1]!==e && add.indexOf("*")) {
+                document.getElementsByClassName("result")[0].value+=e;
+            }
+            else if (add.length!==0 && add[add.length-1]!==e && add.indexOf("/")) {
+                document.getElementsByClassName("result")[0].value+=e;
+            }
+            else if (add.length!==0 && add[add.length-1]!==e && add.indexOf("%")) {
+                document.getElementsByClassName("result")[0].value+=e;
+            }
+        }
+        // remove update data
+        function removeElement() {
+            let selectedValue=document.getElementsByClassName('result')[0].value
+            const newStr=selectedValue.slice(0,-1)
+            document.getElementsByClassName('result')[0].value=newStr;
+        }
+        // final Output
+        function equal() {
+            const selectoperation=document.getElementsByClassName("result")[0].value
+            if (selectoperation.length>0) {
+                document.getElementsByClassName("result")[0].value=eval(selectoperation)
+            }
+        }
+        // reminder
+        // function reminderfinder(e){
+        //     const ans=document.getElementsByClassName("result").value+=e;
+        //     console.log(ans)
+        // }
+
+        console.log(document.getElementsByClassName("result"))
+    </script>
+</body>
+</html>
